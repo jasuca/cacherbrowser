@@ -1,0 +1,45 @@
+#summary Summary of the Cache Browser project
+
+
+== Introduction ==
+
+
+This class try to implement a browser that read files from Internet and return as 
+string the website.
+The browser caches the files and connect over various proxies to camouflate the IP
+( Depending on the proxy service ).
+
+== Configuration Parameters ==
+
+The configuration parameters are:
+	* ProxyThreadController.MAX_NUMBER_THREADS (default = 3): Number of simultaneus 
+		proxies to connect so download a website
+	* CacherBrowser.PROXY_NUMBER (default = 10): Number of proxy addresses passed 
+		to the  ProxyThreadController to start downloading. Make random sublist of
+		your total list. None means that pass all the proxy list
+	* CacherBrowser.CACHE_SIZE (default = 200): Numer of entries in the cache.
+	* CacherBrowser.COOKIEFILE (default = 'cookies.lwp'): File where are stored the cookies
+	* CacherBrowser.COOKIES (default = False): Enable to use a cookies file and automatic handle cookies
+	* CacherBrowser.SOCKET_TIMEOUT (default = 5): Timeout for all connections
+	* CacherBrowser.MAX_NUMBER_GLOBAL_THREADS (default = 275): Max number of threads open. 
+
+== How to use with an example ==
+{{{
+	#Initialize the browser
+	cb = CacherBrowser()
+	
+	#Read the proxies
+	path ="./proxyList/proxy01.txt"
+	cb.readProxy(path)
+	
+	#Open the websites
+	cb.open("http://www.google.com")
+	cb.open("http://www.yahoo.com")
+	
+	#Print the sate of the browser
+	print cb
+}}}
+
+Notes: 
+* The proxy list is a ip:port for line
+* See MISBrTests for more examples
