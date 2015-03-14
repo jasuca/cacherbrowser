@@ -1,0 +1,2 @@
+This class try to implement a browser that read files from Internet and return as string the website.
+The browser caches the files and connect over various proxies to camouflate the IP ( Depending on the proxy service ).
